@@ -1,0 +1,16 @@
+{
+  "name": "nearby_airports_back",
+  "version": "1.0.0",
+  "description": "Backend for nearby airports prototype",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Gustavo BERTOLDI",
+  "license": "ISC",
+  "dependencies": {
+    "amadeus": "^7.0.0",
+    "dotenv": "^16.0.2",
+    "express": "^4.18.1"
+  }
+}
