@@ -19,7 +19,10 @@ let previous = () => { };
 app.get("/nearby-airports", (req, res) => {
   amadeus.referenceData.locations.airports.get({
     longitude: parseFloat(req.query.lon),
-    latitude: parseFloat(req.query.lat)
+    latitude: parseFloat(req.query.lat),
+    page: {
+      limit: req.query.ipp
+    }
   })
     .then((r) => {
       next = () => amadeus.next(r);

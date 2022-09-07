@@ -10,8 +10,9 @@
 		DataTableCell,
 		DataTableBody
 	} from 'svelte-materialify';
-	import { nearbyAirports, next, previous } from '$stores/api';
+	import { nearbyAirports, next, previous, page } from '$stores/api';
   import { CONSTANTS } from '$stores/constants'
+  import ItemsPerPageSelector from './ItemsPerPageSelector.svelte';
 
   $: nextVisible = $nearbyAirports?.meta.links?.next ? true : false;
   $: previousVisible = $nearbyAirports?.meta.links?.previous ? true : false;
@@ -20,9 +21,14 @@
 <MaterialApp>
   {#if $nearbyAirports}
   <Row class="d-flex justify-center">
-    <p style="font-size: 20px">Results: {$nearbyAirports.meta.count}</p>
+    <Col cols={5} sm={4} md={3} lg={2}>
+      <p style="font-size: 20px">Results: {$nearbyAirports.meta.count}</p>
+    </Col>
+    <Col cols={5} sm={4} md={3} lg={2}>
+      <ItemsPerPageSelector/>
+    </Col>
   </Row>
-	<Row class="d-flex justify-center mr-10 ml-10">
+	<Row class="d-flex justify-center mr-3 ml-3">
 		<Col class="d-flex justify-center" cols={12} sm={10} md={8}>
 				<DataTable class="d-flex justify-center">
 					<DataTableHead>
@@ -46,12 +52,13 @@
 				</DataTable>
 		</Col>
 	</Row>
-  <Row class="d-flex justify-center pb-10">
+  <Row class="d-flex justify-center align-center pb-10">
     {#if previousVisible}
     <Button text style={`color: ${$CONSTANTS.AMADEUS_BLUE}`}
       on:click={previous}
       >{'< Previous'}</Button>
     {/if}
+    <span>Page {$page}</span>
     {#if nextVisible}
     <Button text style={`color: ${$CONSTANTS.AMADEUS_BLUE}`}
       on:click={next}>{'Next >'}</Button>

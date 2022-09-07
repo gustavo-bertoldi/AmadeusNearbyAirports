@@ -1,10 +1,8 @@
 <script lang="ts">
 	import { Row, Col, TextField, Button, MaterialApp } from 'svelte-materialify';
   import { CONSTANTS } from '$stores/constants';
-  import { getNearbyAirports } from '$stores/api';
+  import { getNearbyAirports, latitude, longitude } from '$stores/api';
 
-  let latitude = '49.00';
-  let longitude = '2.55';
   let searchActive = true;
 
   const latitudeValidation = [
@@ -34,10 +32,10 @@
 <MaterialApp>
   <Row class="d-flex justify-center">
     <Col cols={6} sm={4} md={3} lg={2}>
-      <TextField rules={latitudeValidation} bind:value={latitude}>Latitude</TextField>
+      <TextField rules={latitudeValidation} bind:value={$latitude}>Latitude</TextField>
     </Col>
     <Col cols={6} sm={4} md={3} lg={2}>
-      <TextField rules={longitudeValidation} bind:value={longitude}>Longitude</TextField>
+      <TextField rules={longitudeValidation} bind:value={$longitude}>Longitude</TextField>
     </Col>
     
   </Row>
@@ -46,7 +44,7 @@
     <Button 
       class="white-text" 
       style={`background-color: ${$CONSTANTS.AMADEUS_BLUE}`}
-      on:click={() => getNearbyAirports(latitude, longitude)}
+      on:click={getNearbyAirports}
       >
       Search
     </Button>
