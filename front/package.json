@@ -31,6 +31,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"node-sass": "^7.0.1",
 		"svelte-materialify": "^0.3.11"
 	}
 }
