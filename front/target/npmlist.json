@@ -1,1 +1,8 @@
-{"version":"0.0.1","name":"nearby-airports-front","dependencies":{"node-sass":{"version":"7.0.1"},"svelte-materialify":{"version":"0.3.11"}}}
+{
+	"version": "0.0.1",
+	"name": "nearby-airports-front",
+	"dependencies": {
+		"node-sass": { "version": "7.0.1" },
+		"svelte-materialify": { "version": "0.3.11" }
+	}
+}

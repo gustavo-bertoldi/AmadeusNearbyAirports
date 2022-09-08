@@ -3,33 +3,29 @@
 		MaterialApp,
 		Row,
 		Col,
-    Button,
 		DataTable,
 		DataTableHead,
 		DataTableRow,
 		DataTableCell,
 		DataTableBody
 	} from 'svelte-materialify';
-	import { nearbyAirports, next, previous, page } from '$stores/api';
-  import { CONSTANTS } from '$stores/constants'
-  import ItemsPerPageSelector from './ItemsPerPageSelector.svelte';
-
-  $: nextVisible = $nearbyAirports?.meta.links?.next ? true : false;
-  $: previousVisible = $nearbyAirports?.meta.links?.previous ? true : false;
+	import { nearbyAirports } from '$stores/api';
+	import ItemsPerPageSelector from './ItemsPerPageSelector.svelte';
+	import PaginationControl from './PaginationControl.svelte';
 </script>
 
 <MaterialApp>
-  {#if $nearbyAirports}
-  <Row class="d-flex justify-center">
-    <Col cols={5} sm={4} md={3} lg={2}>
-      <p style="font-size: 20px">Results: {$nearbyAirports.meta.count}</p>
-    </Col>
-    <Col cols={5} sm={4} md={3} lg={2}>
-      <ItemsPerPageSelector/>
-    </Col>
-  </Row>
-	<Row class="d-flex justify-center mr-3 ml-3">
-		<Col class="d-flex justify-center" cols={12} sm={10} md={8}>
+	{#if $nearbyAirports}
+		<Row class="d-flex justify-center">
+			<Col cols={5} sm={4} md={3} lg={2}>
+				<p style="font-size: 20px">Results: {$nearbyAirports.meta.count}</p>
+			</Col>
+			<Col cols={5} sm={4} md={3} lg={2}>
+				<ItemsPerPageSelector />
+			</Col>
+		</Row>
+		<Row class="d-flex justify-center mr-3 ml-3">
+			<Col class="d-flex justify-center" cols={12} sm={10} md={8}>
 				<DataTable class="d-flex justify-center">
 					<DataTableHead>
 						<DataTableRow>
@@ -50,19 +46,12 @@
 						{/each}
 					</DataTableBody>
 				</DataTable>
-		</Col>
-	</Row>
-  <Row class="d-flex justify-center align-center pb-10">
-    {#if previousVisible}
-    <Button text style={`color: ${$CONSTANTS.AMADEUS_BLUE}`}
-      on:click={previous}
-      >{'< Previous'}</Button>
-    {/if}
-    <span>Page {$page}</span>
-    {#if nextVisible}
-    <Button text style={`color: ${$CONSTANTS.AMADEUS_BLUE}`}
-      on:click={next}>{'Next >'}</Button>
-    {/if}
-  </Row>
-  {/if}
+			</Col>
+		</Row>
+		<Row class="d-flex justify-center">
+			<Col cols={12} md={6}>
+				<PaginationControl />
+			</Col>
+		</Row>
+	{/if}
 </MaterialApp>
