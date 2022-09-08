@@ -10,7 +10,10 @@ class NearbyAirports {
     return new Promise((resolve, reject) => {
       this.#client.referenceData.locations.airports.get({
         longitude: lon,
-        latitude: lat
+        latitude: lat,
+        page: {
+          //limit: ipp
+        }
       }).then(r => {
         this.#response = r;
         resolve(r.result);
