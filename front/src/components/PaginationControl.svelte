@@ -3,8 +3,8 @@
 	import { nearbyAirports, next, previous, first, page, nbPages } from '$stores/api';
 	import { CONSTANTS } from '$stores/constants';
 
-	$: nextVisible = $nearbyAirports?.meta.links?.next ? true : false;
-	$: previousVisible = $nearbyAirports?.meta.links?.previous ? true : false;
+	$: nextVisible = $nearbyAirports?.meta?.links?.next ? true : false;
+	$: previousVisible = $nearbyAirports?.meta?.links?.previous ? true : false;
 </script>
 
 <MaterialApp>

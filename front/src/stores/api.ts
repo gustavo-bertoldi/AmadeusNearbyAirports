@@ -7,7 +7,7 @@ export const latitude: Writable<string> = writable('49.00');
 export const longitude: Writable<string> = writable('2.55');
 export const page: Writable<number> = writable(1);
 export const nbPages: Readable<number> = derived([nearbyAirports, itemsPerPage], ($v) => {
-	if ($v[0]) return Math.ceil($v[0].meta.count / $v[1]);
+	if ($v[0]?.meta) return Math.ceil($v[0].meta.count / $v[1]);
 	else return 0;
 });
 
