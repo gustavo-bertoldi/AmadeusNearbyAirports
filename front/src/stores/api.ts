@@ -18,7 +18,10 @@ let lon: string;
 CONSTANTS.subscribe((v) => (back_url = v.BACK_URL));
 latitude.subscribe((v) => (lat = v));
 longitude.subscribe((v) => (lon = v));
-itemsPerPage.subscribe((v) => (ipp = v));
+itemsPerPage.subscribe((v) => {
+  ipp = v;
+  getNearbyAirports(); 
+});
 
 export function getNearbyAirports() {
 	const url = `${back_url}/nearby-airports?lat=${lat}&lon=${lon}&ipp=${ipp}`;

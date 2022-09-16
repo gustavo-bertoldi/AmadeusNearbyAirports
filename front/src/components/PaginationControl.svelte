@@ -9,7 +9,7 @@
 
 <MaterialApp>
 	<Row class="d-flex justify-space-between align-center pb-10">
-		<Col class="d-flex justify-end" cols={3}>
+		<Col class="d-flex justify-end" cols={2}>
 			{#if previousVisible}
 				<div class="button-container">
 					<Button text style={`color: ${$CONSTANTS.AMADEUS_BLUE}`} on:click={first}>
@@ -18,7 +18,7 @@
 				</div>
 			{/if}
 		</Col>
-		<Col class="d-flex justify-center align-center" cols={6}>
+		<Col class="d-flex justify-center align-center" cols={8}>
 			<div class="button-container">
 				{#if previousVisible}
 					<Button text style={`color: ${$CONSTANTS.AMADEUS_BLUE}`} on:click={previous}>
@@ -26,7 +26,7 @@
 					</Button>
 				{/if}
 			</div>
-			<span class="ml-8 mr-8">Page {$page} of {$nbPages}</span>
+			<span class="ml-8 mr-8" style="min-width: 85px;">Page {$page} of {$nbPages}</span>
 			<div class="button-container">
 				{#if nextVisible}
 					<Button text style={`color: ${$CONSTANTS.AMADEUS_BLUE}`} on:click={next}>
@@ -35,7 +35,7 @@
 				{/if}
 			</div>
 		</Col>
-		<Col class="d-flex justify-start" cols={3}>
+		<Col class="d-flex justify-start" cols={2}>
 			<div class="button-container">
 				<!-- Last button -->
 			</div>

@@ -12,7 +12,7 @@ class NearbyAirports {
         longitude: lon,
         latitude: lat,
         page: {
-          //limit: ipp
+          limit: ipp
         }
       }).then(r => {
         this.#response = r;
